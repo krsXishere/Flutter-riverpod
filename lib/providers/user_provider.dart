@@ -6,6 +6,9 @@ var userRepositoriesProvider = Provider(
   (ref) => UserRepository(),
 );
 
-var userProvider = FutureProvider<UserModel?>(
-  (ref) => ref.watch(userRepositoriesProvider).getUser(2),
-);
+var userProvider =
+    FutureProvider.autoDispose.family<UserModel?, int>((ref, id) async {
+  var user = ref.watch(userRepositoriesProvider).getUser(id);
+  ref.keepAlive();
+  return user;
+});

@@ -12,7 +12,7 @@ class UserRepository {
     );
 
     try {
-      String apiURL = "https://reqres.in/api/users/2";
+      String apiURL = "https://reqres.in/api/users/$id";
       var response = await http.get(Uri.parse(apiURL));
       var jsonObject = jsonDecode(response.body);
       var data = (jsonObject as Map<String, dynamic>);

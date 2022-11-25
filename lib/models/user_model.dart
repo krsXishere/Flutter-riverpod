@@ -19,4 +19,7 @@ class UserModel {
       avatar: object['avatar'],
     );
   }
+
+  @override
+  String toString() => '($id) $firstName $lastName $email $avatar';
 }
